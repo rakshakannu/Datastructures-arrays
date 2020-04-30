@@ -1,0 +1,5 @@
+void leftroatate(int arr[], int n, int d)
+{
+  for(int i=0;i<n;i++)
+  leftrotateone(arr,d); //refer to the program of left rotating once the array
+}
