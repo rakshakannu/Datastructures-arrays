@@ -16,4 +16,20 @@ for(int i=0;i<res;i++)
   arr[i]=temp[i];
 }
 return res; //returns the size of array without the duplicate elements
+
+//  best solution
+
+int removeduplicate(int arr[], int n)
+{
+  res=1;
+  for(int i=1;i<n;i++)
+  {
+    if(arr[i]!=arr[res-1])
+    {
+      arr[res]=arr[i];
+      res++;
+    }
+  }
+  return res;
+}
     
