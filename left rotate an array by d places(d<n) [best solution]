@@ -9,3 +9,24 @@ void leftrotate(int arr[], int n, int d)
     arr[n-d+i]=temp[i]; //moving back the d elements into the original array
 }
 
+// better solution using reverse function
+
+void leftrotate(int arr[],int n, int d)
+{
+  reverse(arr,0,d);
+  reverse(arr,d,n-1);
+  reverse(arr,0,n-1);
+}
+
+void reverse( int arr[], int low, int high)
+{
+  while(low<high)
+  {
+  swap(arr[low[low],arr[high])
+  low++;
+  high--;
+  }
+}
+  
+
+
