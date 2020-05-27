@@ -1,0 +1,4 @@
+// finding the maximum sum subarray in a given array
+// the elements in the subarray should be contigous in the main array
+// the array contians negative elements too
+
