@@ -1,4 +1,37 @@
-// finding the maximum sum subarray in a given array
+// finding the MAXIMUM SUM SUBARRAY in a given array
 // the elements in the subarray should be contigous in the main array
 // the array contians negative elements too
 
+// naive solution O[n square]
+// in this method we traverse the array from left to right
+
+int maxsum(int arr[], int n)
+{
+  int res= arr[0]; // initializing res as first ele and comparing with sum of all possible subarrays.
+  for(int i=0;i<n;i++)
+  {
+    int curr=0;
+    for(int j=i;j<n;j++) // traversing all possible subarrays.
+    {
+      curr=curr+arr[i];
+      res = max(res, curr);
+    }
+  }
+}
+
+// better solution - O[n], O[1] space
+// here also we traverse the array from left to right
+
+// maxending[i]= max(maxending[i-1]+arr[i],arr[i])
+
+int maxending(int arr[], int sum)
+{
+  int res=arr[0];
+  int maxending=arr[0];
+  for(int i=1;i<n;i++)
+  {
+    maxending=max(maxending[i-1]+arr[i], arr[i]);
+    res = max(res, maxending);
+  }
+  return res;
+}
