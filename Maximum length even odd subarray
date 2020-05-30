@@ -1,0 +1,28 @@
+// the longest subarray that contains even and odd alternate elements
+
+// naive solution - O[n square]
+// using current variable
+
+int MaxEvenOdd(int arr[], int n)
+{
+  int res=1;
+  for(int i=0;i<n;i++)
+  {
+    int curr=1;
+    for(int j=i+1;j<n;j++)
+    {
+      if(arr[j]%2==0 && arr[j+1]%2!=0) || (arr[j]%2!=0 && arr[j]%2==0)
+        curr++
+      else
+        break;
+    }
+    
+    res = Math.max(curr,res);
+  }
+  return res;
+}
+
+// efficient solution using KADANE'S ALGORITHM - O[n]
+
+
+
