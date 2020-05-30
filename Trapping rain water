@@ -1,0 +1,50 @@
+// an array with 0 or positive integers is given, need to find how many units of water can be trapped
+// if the numbers are in increasing/decreasing order, we cannot trap water
+
+// naive solution - O[n square]
+// res[i]= min(lmax, rmax) - arr[i]
+
+int getwater(int arr, int n)
+{
+  int res=0;
+  for(int i=1;i<n-1;i++) // the first and the last element cannot carry water on top of them, so exclude them
+  {
+    int lmax=arr[i];
+    for(int j=0;j<i;j++) // finding left max
+    {
+      lmax=max(arr[i],lmax);
+    }
+    
+    int rmax=arr[i]; // finding right max
+    for(int j=0;j<n;j++)
+    {
+      rmax=max(arr[i], rmax);
+    }
+    
+    res = res + (min(lamx,rmax)-arr[i]);
+    return res;
+}
+
+// better solution - O[n]
+// precomputing lmax and rmax to reduce the time complexity to n from n square
+// need theta(n) extra space also
+
+int getwater(int arr, int n)
+{
+  int res=0;
+  int lmax=arr[0];
+    for(int i=1;i<n;i++) // finding left max
+    {
+      lmax[i]=max(arr[i],lmax[i-1]);
+    }
+    
+    int rmax=arr[n-1]; // finding right max
+    for(int i=n-2;i>=;i++)
+    {
+      rmax[i]=max(arr[i], rmax[i+1]);
+    }
+    
+    for (int i=1;i<n-1;i++) // exclude the first and the last element
+      res = res + (min(lamx[i],rmax[i])-arr[i]);
+    return res;
+}
