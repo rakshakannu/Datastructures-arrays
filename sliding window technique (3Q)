@@ -1,0 +1,119 @@
+// compute the sum of first window and get the sum of next window in O(1) time. for example subtract the first element and add the third element for k=3.
+// Given a array of integers and a number k, find the maximum sum of k concecutive elements
+// maintain a variable for max-sum and keep updating it using Math.max()
+// there are different ways to implement this method but we are considering whent i is the end of the current window
+
+int currsum = 0;
+for (int i=0;i<n;i++)
+    currsum+= arr[i]; // find the sum of the first window
+int maxsum = surrsum;
+
+for(int i=k;i<n;i++)
+{
+    currsum += (arr[i] - arr[i=k]); //deleting the first element and adding the fourth element for k=3.
+    max_sum = Math.max(currsum, maxsum); // updating the maxsum
+}
+
+return maxsum;
+
+time: O(n) - linear time
+
+
+// Subarry with given sum
+
+class SubarraySum 
+{ 
+	/* Returns true if the there is a subarray of arr[] with sum equal to 
+	'sum' otherwise returns false. Also, prints the result */
+	int subArraySum(int arr[], int n, int sum) 
+	{ 
+		int curr_sum = arr[0], start = 0, i; 
+
+		// Pick a starting point 
+		for (i = 1; i <= n; i++) 
+		{ 
+			// If curr_sum exceeds the sum, then remove the starting elements 
+			while (curr_sum > sum && start < i-1) 
+			{ 
+				curr_sum = curr_sum - arr[start]; 
+				start++; 
+			} 
+			
+			// If curr_sum becomes equal to sum, then return true 
+			if (curr_sum == sum) 
+			{ 
+				int p = i-1; 
+				System.out.println("Sum found between indexes " + start 
+						+ " and " + p); 
+				return 1; 
+			} 
+			
+			// Add this element to curr_sum 
+			if (i < n) 
+			curr_sum = curr_sum + arr[i]; 
+			
+		} 
+
+		System.out.println("No subarray found"); 
+		return 0; 
+	} 
+
+	public static void main(String[] args) 
+	{ 
+		SubarraySum arraysum = new SubarraySum(); 
+		int arr[] = {15, 2, 4, 8, 9, 5, 10, 23}; 
+		int n = arr.length; 
+		int sum = 23; 
+		arraysum.subArraySum(arr, n, sum); 
+	} 
+} 
+
+
+// given an unsorted array of non-negative integers, find if there is a subarray with given sum [NON NEGATIVE CONDITION]
+// time = O(n)
+// space = O(1)
+// considering every point as an end point and we check if the previous window sum = current window sum or not
+
+(didn't understand the solution)
+
+// N-bonacci series
+// Finonacci means every eleemnt is the sum of previous two elements. N-bonacci means every element is the sum of previous n elements.
+// observe that after the first n elements in n-bonacci we do normal additon of n previous elements to get the next element.
+
+ 
+class GFG { 
+	
+	// Function to print bonacci series 
+	static void bonacciseries(int n, int m) 
+	{ 
+	
+		// Assuming m > n. 
+		int a[] = new int[m]; 
+		for(int i = 0; i < m; i++) 
+			a[i] = 0; 
+			
+		a[n - 1] = 1; 
+		a[n] = 1; 
+	
+		// Uses sliding window 
+		for (int i = n + 1; i < m; i++) 
+			a[i] = 2 * a[i - 1] - a[i - n - 1]; 
+	
+		// Printing result 
+		for (int i = 0; i < m; i++) 
+			System.out.print(a[i] + " "); 
+	} 
+	
+	// Driver's Code 
+	public static void main(String args[]) 
+	{ 
+		int N = 5, M = 15; 
+		bonacciseries(N, M); 
+	} 
+} 
+
+
+// count distinct elements of every window of size k 
+// we can use hashing to count elemnets in window of K in O(K) time.
+// total time when we use hashing for every window is O(n*K)
+// this can be optimised in O(n)
