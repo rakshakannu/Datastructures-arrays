@@ -27,3 +27,20 @@
   }
   return profit;
  }
+
+// efficient solution
+// surprisingly easy solution
+// we need to find bottom points and peak points
+// buy the stock the the bottom point and sell it at its peak point
+
+int maxprofit(int[] arr, int n)
+{
+  int profit=0;
+  for(int i=1;i<n;i++)
+    if(price[i]>price[i-1])
+      profit += price[i]-price[i-1];
+      
+  return profit;
+}
+
+( do dry run and understand the solution )
