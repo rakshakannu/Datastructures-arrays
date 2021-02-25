@@ -1,0 +1,66 @@
+// hashing method can be used
+
+Method 5 (Use Hashing) 
+Union 
+
+
+Initialize an empty hash set hs.
+Iterate through the first array and put every element of the first array in the set S.
+Repeat the process for the second array.
+Print the set hs.
+
+Intersection 
+
+
+Initialize an empty set hs.
+Iterate through the first array and put every element of the first array in the set S.
+For every element x of the second array, do the following :
+
+Search x in the set hs. If x is present, then print it. Time complexity of this method is ?(m+n) under the assumption that hash table search and insert operations take ?(1) time.
+
+// Java program to find union and intersection
+// using Hashing
+import java.util.HashSet;
+
+class Test {
+    // Prints union of arr1[0..m-1] and arr2[0..n-1]
+    static void printUnion(int arr1[], int arr2[])
+    {
+        HashSet<Integer> hs = new HashSet<>();
+
+        for (int i = 0; i < arr1.length; i++)
+            hs.add(arr1[i]);
+        for (int i = 0; i < arr2.length; i++)
+            hs.add(arr2[i]);
+        System.out.println(hs);
+    }
+
+    // Prints intersection of arr1[0..m-1] and arr2[0..n-1]
+    static void printIntersection(int arr1[], int arr2[])
+    {
+        HashSet<Integer> hs = new HashSet<>();
+        HashSet<Integer> hs1 = new HashSet<>();
+
+        for (int i = 0; i < arr1.length; i++)
+            hs.add(arr1[i]);
+
+        for (int i = 0; i < arr2.length; i++)
+            if (hs.contains(arr2[i]))
+                System.out.print(arr2[i] + " ");
+    }
+
+    // Driver code
+    public static void main(String[] args)
+    {
+        int arr1[] = { 7, 1, 5, 2, 3, 6 };
+        int arr2[] = { 3, 8, 6, 20, 7 };
+
+        // Function call
+        System.out.println("Union of two arrays is : ");
+        printUnion(arr1, arr2);
+
+        System.out.println(
+            "Intersection of two arrays is : ");
+        printIntersection(arr1, arr2);
+    }
+}
